@@ -1,0 +1,684 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "Metric Tracking System",
+    "description": ""
+  },
+  "servers": [
+    {
+      "url": "http://localhost:5000",
+      "description": "Development"
+    }
+  ],
+  "paths": {
+    "/api/v1/signup": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "responses": {
+          "201": {
+            "description": "Created",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpBody"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/SignUpBody"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/signin": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignInResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/SignInResponse"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInBody"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/SignInBody"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/refresh": {
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/RefreshResponse"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/RefreshResponse"
+                }
+              }
+            }
+          },
+          "403": {
+            "description": "Could not refresh access token",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Forbidden"
+                }
+              }
+            }
+          }
+        },
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshBody"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/RefreshBody"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/profile": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "authorization",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "User information",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/User"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Unauthorized"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/metrics": {
+      "get": {
+        "tags": [
+          "Metric"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "unit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of metrics",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Metrics"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Metrics"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "Metric"
+        ],
+        "description": "",
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "201": {
+            "description": "Add a new metric",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Metric"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/Metric"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ],
+        "requestBody": {
+          "required": true,
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddMetricBody"
+              }
+            },
+            "application/xml": {
+              "schema": {
+                "$ref": "#/components/schemas/AddMetricBody"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/v1/metrics/charts": {
+      "get": {
+        "tags": [
+          "Metric"
+        ],
+        "description": "",
+        "parameters": [
+          {
+            "name": "type",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "period",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "unit",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricsCharts"
+                }
+              },
+              "application/xml": {
+                "schema": {
+                  "$ref": "#/components/schemas/MetricsCharts"
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "bearerAuth": []
+          }
+        ]
+      }
+    }
+  },
+  "components": {
+    "securitySchemes": {
+      "bearerAuth": {
+        "type": "http",
+        "scheme": "bearer",
+        "bearerFormat": "JWT"
+      }
+    },
+    "schemas": {
+      "SignUpBody": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "toannguyentruong"
+          },
+          "password": {
+            "type": "string",
+            "example": "mypassword"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "Toan"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Nguyen"
+          }
+        },
+        "xml": {
+          "name": "SignUpBody"
+        }
+      },
+      "User": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "363b091b-791b-4dc6-958e-556979ff4d80"
+          },
+          "username": {
+            "type": "string",
+            "example": "toannguyentruong"
+          },
+          "firstName": {
+            "type": "string",
+            "example": "Toan"
+          },
+          "lastName": {
+            "type": "string",
+            "example": "Nguyen"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2024-12-03T15:05:22.624Z"
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2024-12-03T15:05:22.624Z"
+          }
+        },
+        "xml": {
+          "name": "User"
+        }
+      },
+      "SignInBody": {
+        "type": "object",
+        "properties": {
+          "username": {
+            "type": "string",
+            "example": "toannguyentruong"
+          },
+          "password": {
+            "type": "string",
+            "example": "mypassword"
+          }
+        },
+        "xml": {
+          "name": "SignInBody"
+        }
+      },
+      "SignInResponse": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+          },
+          "refreshToken": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+          }
+        },
+        "xml": {
+          "name": "SignInResponse"
+        }
+      },
+      "RefreshBody": {
+        "type": "object",
+        "properties": {
+          "refreshToken": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+          }
+        },
+        "xml": {
+          "name": "RefreshBody"
+        }
+      },
+      "RefreshResponse": {
+        "type": "object",
+        "properties": {
+          "accessToken": {
+            "type": "string",
+            "example": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9"
+          }
+        },
+        "xml": {
+          "name": "RefreshResponse"
+        }
+      },
+      "SuccessResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "example": 200
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "example": true
+          },
+          "data": {
+            "type": "object",
+            "properties": {}
+          }
+        },
+        "xml": {
+          "name": "SuccessResponse"
+        }
+      },
+      "AddMetricBody": {
+        "type": "object",
+        "properties": {
+          "date": {
+            "type": "string",
+            "example": "2025-01-08T13:39:59Z"
+          },
+          "value": {
+            "type": "number",
+            "example": 12.3
+          },
+          "type": {
+            "type": "string",
+            "example": "DISTANCE"
+          },
+          "unit": {
+            "type": "string",
+            "example": "cm"
+          }
+        },
+        "xml": {
+          "name": "AddMetricBody"
+        }
+      },
+      "Metric": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "string",
+            "example": "7de918c5-8b2f-4ff1-83a9-78bbe19bb882"
+          },
+          "unit": {
+            "type": "string",
+            "example": "C"
+          },
+          "type": {
+            "type": "string",
+            "example": "TEMPERATURE"
+          },
+          "value": {
+            "type": "number",
+            "example": 37.8
+          },
+          "date": {
+            "type": "string",
+            "example": "2025-01-08T13:39:59.000Z"
+          },
+          "userId": {
+            "type": "string",
+            "example": "81dec07a-ed27-45df-bc08-68d0d96d4bd3"
+          },
+          "createdAt": {
+            "type": "string",
+            "example": "2025-01-17T15:01:36.347Z"
+          },
+          "updatedAt": {
+            "type": "string",
+            "example": "2025-01-17T15:01:36.347Z"
+          }
+        },
+        "xml": {
+          "name": "Metric"
+        }
+      },
+      "Metrics": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "id": {
+              "type": "string",
+              "example": "7de918c5-8b2f-4ff1-83a9-78bbe19bb882"
+            },
+            "unit": {
+              "type": "string",
+              "example": "C"
+            },
+            "type": {
+              "type": "string",
+              "example": "TEMPERATURE"
+            },
+            "value": {
+              "type": "number",
+              "example": 37.8
+            },
+            "date": {
+              "type": "string",
+              "example": "2025-01-08T13:39:59.000Z"
+            },
+            "userId": {
+              "type": "string",
+              "example": "81dec07a-ed27-45df-bc08-68d0d96d4bd3"
+            },
+            "createdAt": {
+              "type": "string",
+              "example": "2025-01-17T15:01:36.347Z"
+            },
+            "updatedAt": {
+              "type": "string",
+              "example": "2025-01-17T15:01:36.347Z"
+            }
+          }
+        },
+        "xml": {
+          "name": "Metrics"
+        }
+      },
+      "MetricsCharts": {
+        "type": "array",
+        "items": {
+          "type": "object",
+          "properties": {
+            "value": {
+              "type": "number",
+              "example": 310.95
+            },
+            "unit": {
+              "type": "string",
+              "example": "K"
+            },
+            "type": {
+              "type": "string",
+              "example": "TEMPERATURE"
+            },
+            "date": {
+              "type": "string",
+              "example": "2025-01-08T13:39:59.000Z"
+            }
+          }
+        },
+        "xml": {
+          "name": "MetricsCharts"
+        }
+      },
+      "Unauthorized": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "example": 401
+          },
+          "message": {
+            "type": "string",
+            "example": "Unauthorized"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "example": false
+          },
+          "data": {}
+        },
+        "xml": {
+          "name": "Unauthorized"
+        }
+      },
+      "Forbidden": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "example": 403
+          },
+          "message": {
+            "type": "string",
+            "example": "Could not refresh access token"
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "example": false
+          },
+          "data": {}
+        },
+        "xml": {
+          "name": "Forbidden"
+        }
+      },
+      "ErrorResponse": {
+        "type": "object",
+        "properties": {
+          "code": {
+            "type": "number",
+            "example": 500
+          },
+          "isSuccess": {
+            "type": "boolean",
+            "example": false
+          },
+          "message": {
+            "type": "string",
+            "example": "Error message"
+          }
+        },
+        "xml": {
+          "name": "ErrorResponse"
+        }
+      }
+    }
+  }
+}

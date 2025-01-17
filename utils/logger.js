@@ -4,7 +4,7 @@ const DailyRotateFile = require('winston-daily-rotate-file');
 
 const logger = createLogger({
   exitOnError: false,
-  logLevels: {
+  levels: {
     fatal: 0,
     error: 1,
     trace: 2,
@@ -13,7 +13,7 @@ const logger = createLogger({
     debug: 5,
   },
   format: combine(
-    format.colorize(),
+    // format.colorize(),
     timestamp({ format: 'DD-MM-YYYY HH:mm:ss' }),
     printf((info) => {
       const splat = info[Symbol.for('splat')];

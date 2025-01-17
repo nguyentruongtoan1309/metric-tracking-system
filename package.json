@@ -4,7 +4,8 @@
   "description": "A metric tracking system that support different units for distance and temperature.",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon index.js",
+    "start": "node index.js",
+    "start:dev": "nodemon index.js",
     "swagger": "node swagger.js",
     "test": "jest",
     "test:watch": "jest --watch"
@@ -20,12 +21,15 @@
     "helmet": "^8.0.0",
     "http-status": "^2.0.0",
     "jsonwebtoken": "^9.0.2",
+    "moment-timezone": "^0.5.46",
     "morgan": "^1.10.0",
     "passport": "^0.7.0",
     "passport-jwt": "^4.0.1",
     "pg": "^8.13.1",
     "pg-hstore": "^2.3.4",
     "sequelize": "^6.37.5",
+    "swagger-autogen": "^2.23.7",
+    "swagger-ui-express": "^5.0.1",
     "winston": "^3.17.0",
     "winston-daily-rotate-file": "^5.0.0",
     "yup": "^1.6.1"

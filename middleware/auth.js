@@ -26,6 +26,9 @@ function verifyToken(req, res, next) {
 }
 
 async function auth(req, res, next) {
+  /* #swagger.security = [{
+          "bearerAuth": []
+  }] */
   return new Promise(() => {
     passport.authenticate('jwt', { session: true }, (err, user) => {
       if (user) {

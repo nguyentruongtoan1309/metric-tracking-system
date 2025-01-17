@@ -11,6 +11,7 @@ Metric.init(
       allowNull: false,
       primaryKey: true,
     },
+    date: { type: DataTypes.DATE, allowNull: false },
     value: { type: DataTypes.FLOAT, allowNull: false },
     type: { type: DataTypes.ENUM(Object.values(METRIC_TYPE)), allowNull: false },
     unit: {
@@ -22,6 +23,12 @@ Metric.init(
     sequelize,
     timestamps: true,
     modelName: 'metrics',
+    indexes: [
+      {
+        unique: true,
+        fields: ['date', 'userId'],
+      },
+    ],
   },
 );
 
