@@ -1,0 +1,304 @@
+{
+	"info": {
+		"_postman_id": "39fe8a8f-c61f-4962-991e-34fd9b1f4895",
+		"name": "Metric Tracking System",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "9341635"
+	},
+	"item": [
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "signUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test1\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/signUp",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"signUp"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"username\": \"test1\",\r\n    \"password\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/signin",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"signin"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "refresh token",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdjMzhlNGRkLThlNzktNDkzNS04NmI2LWE0NmNhZTY4MTE3NiIsInVzZXJuYW1lIjoidGVzdDEiLCJwYXNzd29yZCI6IiQyYSQxMCR0bjQyeWhnd1UxT2RPRHppNm01bjBleExRUVJaWHZ5NWhGRUt3Wi9zNVNmN2d4NENXUFB2TyIsImZpcnN0TmFtZSI6bnVsbCwibGFzdE5hbWUiOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMDEtMTdUMDY6NTY6NDUuODYwWiIsInVwZGF0ZWRBdCI6IjIwMjUtMDEtMTdUMDY6NTY6NDUuODYwWiIsImlhdCI6MTczNzA5NzAxMiwiZXhwIjoxNzM5Njg5MDEyfQ.wa8NFKp_fLhMWb6R6X73EwTiD1NQhCOeF6JynvDKLd4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/refresh",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"refresh"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "profile",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdjMzhlNGRkLThlNzktNDkzNS04NmI2LWE0NmNhZTY4MTE3NiIsInVzZXJuYW1lIjoidGVzdDEiLCJwYXNzd29yZCI6IiQyYSQxMCR0bjQyeWhnd1UxT2RPRHppNm01bjBleExRUVJaWHZ5NWhGRUt3Wi9zNVNmN2d4NENXUFB2TyIsImZpcnN0TmFtZSI6bnVsbCwibGFzdE5hbWUiOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMDEtMTdUMDY6NTY6NDUuODYwWiIsInVwZGF0ZWRBdCI6IjIwMjUtMDEtMTdUMDY6NTY6NDUuODYwWiIsImlhdCI6MTczNzA5NzA3OSwiZXhwIjoxNzM3MTgzNDc5fQ.f5aAjSmh2daUTl3-x0JRjtHZbLfsjjGcD4Ip8dYX0oU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"refreshToken\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjdjMzhlNGRkLThlNzktNDkzNS04NmI2LWE0NmNhZTY4MTE3NiIsInVzZXJuYW1lIjoidGVzdDEiLCJwYXNzd29yZCI6IiQyYSQxMCR0bjQyeWhnd1UxT2RPRHppNm01bjBleExRUVJaWHZ5NWhGRUt3Wi9zNVNmN2d4NENXUFB2TyIsImZpcnN0TmFtZSI6bnVsbCwibGFzdE5hbWUiOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMDEtMTdUMDY6NTY6NDUuODYwWiIsInVwZGF0ZWRBdCI6IjIwMjUtMDEtMTdUMDY6NTY6NDUuODYwWiIsImlhdCI6MTczNzA5NzAxMiwiZXhwIjoxNzM5Njg5MDEyfQ.wa8NFKp_fLhMWb6R6X73EwTiD1NQhCOeF6JynvDKLd4\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"profile"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "metric",
+			"item": [
+				{
+					"name": "add metric",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgxZGVjMDdhLWVkMjctNDVkZi1iYzA4LTY4ZDBkOTZkNGJkMyIsInVzZXJuYW1lIjoidGVzdDEiLCJwYXNzd29yZCI6IiQyYSQxMCQwdE9rNFNtMzYvL2ZvajV0bVQuTzEuZUVLZXdKeTRKWU5tdGRTaWg5b2JHT0ZYREVjQWJZNiIsImZpcnN0TmFtZSI6bnVsbCwibGFzdE5hbWUiOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMDEtMTdUMTU6MDE6MDYuOTE3WiIsInVwZGF0ZWRBdCI6IjIwMjUtMDEtMTdUMTU6MDE6MDYuOTE3WiIsImlhdCI6MTczNzEyNjA3OCwiZXhwIjoxNzM3MjEyNDc4fQ.TuXoi1h8KUcC0i_9OiCoj9eBFFEBHHoWuQbk7K6cT34",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"unit\": \"C\",\r\n    \"type\": \"TEMPERATURE\",\r\n    \"value\": 37.8,\r\n    \"date\": \"2025-01-08T13:39:59Z\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/metrics",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"metrics"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get metrics",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgxZGVjMDdhLWVkMjctNDVkZi1iYzA4LTY4ZDBkOTZkNGJkMyIsInVzZXJuYW1lIjoidGVzdDEiLCJwYXNzd29yZCI6IiQyYSQxMCQwdE9rNFNtMzYvL2ZvajV0bVQuTzEuZUVLZXdKeTRKWU5tdGRTaWg5b2JHT0ZYREVjQWJZNiIsImZpcnN0TmFtZSI6bnVsbCwibGFzdE5hbWUiOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMDEtMTdUMTU6MDE6MDYuOTE3WiIsInVwZGF0ZWRBdCI6IjIwMjUtMDEtMTdUMTU6MDE6MDYuOTE3WiIsImlhdCI6MTczNzEyNjA3OCwiZXhwIjoxNzM3MjEyNDc4fQ.TuXoi1h8KUcC0i_9OiCoj9eBFFEBHHoWuQbk7K6cT34",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/metrics?type=TEMPERATURE&unit=K",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"metrics"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "TEMPERATURE"
+								},
+								{
+									"key": "unit",
+									"value": "K"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get metrics chart",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjgxZGVjMDdhLWVkMjctNDVkZi1iYzA4LTY4ZDBkOTZkNGJkMyIsInVzZXJuYW1lIjoidGVzdDEiLCJwYXNzd29yZCI6IiQyYSQxMCQwdE9rNFNtMzYvL2ZvajV0bVQuTzEuZUVLZXdKeTRKWU5tdGRTaWg5b2JHT0ZYREVjQWJZNiIsImZpcnN0TmFtZSI6bnVsbCwibGFzdE5hbWUiOm51bGwsImNyZWF0ZWRBdCI6IjIwMjUtMDEtMTdUMTU6MDE6MDYuOTE3WiIsInVwZGF0ZWRBdCI6IjIwMjUtMDEtMTdUMTU6MDE6MDYuOTE3WiIsImlhdCI6MTczNzEyNjA3OCwiZXhwIjoxNzM3MjEyNDc4fQ.TuXoi1h8KUcC0i_9OiCoj9eBFFEBHHoWuQbk7K6cT34",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:5000/api/v1/metrics/charts?type=TEMPERATURE&period=TWO_MONTH&unit=K",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "5000",
+							"path": [
+								"api",
+								"v1",
+								"metrics",
+								"charts"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "TEMPERATURE"
+								},
+								{
+									"key": "period",
+									"value": "TWO_MONTH"
+								},
+								{
+									"key": "unit",
+									"value": "K"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

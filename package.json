@@ -4,7 +4,7 @@
   "description": "A metric tracking system that support different units for distance and temperature.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node swagger.js",
     "start:dev": "nodemon index.js",
     "swagger": "node swagger.js",
     "test": "jest",
